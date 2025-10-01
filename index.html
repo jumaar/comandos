@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheatsheet de Comandos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        code, .font-fira {
+            font-family: 'Fira Code', monospace;
+        }
+        /* Animación para el feedback de copiado */
+        .copied-feedback {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #10B981; /* green-500 */
+            color: white;
+            font-weight: 500;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            pointer-events: none;
+        }
+        .copied-feedback.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-1rem);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Encabezado -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">Cheatsheet de Comandos</h1>
+            <p class="mt-2 text-lg text-gray-400">Tu guía rápida para la terminal.</p>
+        </header>
+
+        <!-- Contenedor principal de las secciones de comandos -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Sección de Linux -->
+            <section id="linux-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4 border-b border-gray-700 pb-2">Linux</h2>
+                <div id="linux-commands" class="space-y-3">
+                    <!-- Los comandos de Linux se insertarán aquí -->
+                </div>
+            </section>
+
+            <!-- Sección de Git -->
+            <section id="git-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-orange-400 mb-4 border-b border-gray-700 pb-2">Git</h2>
+                <div id="git-commands" class="space-y-3">
+                    <!-- Los comandos de Git se insertarán aquí -->
+                </div>
+            </section>
+
+            <!-- Sección de Docker -->
+            <section id="docker-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4 border-b border-gray-700 pb-2">Docker</h2>
+                <div id="docker-commands" class="space-y-3">
+                    <!-- Los comandos de Docker se insertarán aquí -->
+                </div>
+            </section>
+
+            <!-- Sección de Cloudflared -->
+            <section id="cloudflared-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-red-400 mb-4 border-b border-gray-700 pb-2">Cloudflared</h2>
+                <div id="cloudflared-commands" class="space-y-3">
+                    <!-- Los comandos de Cloudflared se insertarán aquí -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Elemento para feedback visual de copiado -->
+    <div id="copy-feedback" class="copied-feedback">
+        ¡Comando copiado!
+    </div>
+
+    <script>
+        // --- BASE DE DATOS DE COMANDOS ---
+
+        const commandsData = {
+            linux: [
+                { cmd: 'ls', desc: 'Lista el contenido de un directorio.' },
+                { cmd: 'ls -l', desc: 'Lista en formato largo.' },
+                { cmd: 'ls -a', desc: 'Lista todos los archivos, incluyendo ocultos.' },
+                { cmd: 'cd [directorio]', desc: 'Cambia al directorio especificado.' },
+                { cmd: 'pwd', desc: 'Muestra el directorio actual.' },
+                { cmd: 'mkdir [nombre]', desc: 'Crea un nuevo directorio.' },
+                { cmd: 'rm [archivo]', desc: 'Elimina un archivo.' },
+                { cmd: 'rm -r [directorio]', desc: 'Elimina un directorio y su contenido.' },
+                { cmd: 'cp [origen] [destino]', desc: 'Copia un archivo o directorio.' },
+                { cmd: 'mv [origen] [destino]', desc: 'Mueve o renombra un archivo o directorio.' },
+                { cmd: 'touch [archivo]', desc: 'Crea un archivo vacío o actualiza su fecha.' },
+                { cmd: 'cat [archivo]', desc: 'Muestra el contenido de un archivo.' },
+                { cmd: 'grep [patrón] [archivo]', desc: 'Busca un patrón en un archivo.' },
+                { cmd: 'sudo [comando]', desc: 'Ejecuta un comando como superusuario.' },
+                { cmd: 'top', desc: 'Muestra procesos en ejecución.' },
+                { cmd: 'ssh [usuario]@[host]', desc: 'Conecta a un servidor remoto por SSH.' },
+            ],
+            git: [
+                { cmd: 'git status', desc: 'Muestra el estado del repositorio.' },
+                { cmd: 'git add .', desc: 'Añade todos los archivos nuevos y modificados.' },
+                { cmd: 'git commit -m "mensaje"', desc: 'Guarda los cambios en el repositorio.' },
+                { cmd: 'git push', desc: 'Sube los cambios al repositorio remoto.' },
+                { cmd: 'git pull', desc: 'Descarga cambios del repositorio remoto.' },
+                { cmd: 'git clone [url]', desc: 'Clona un repositorio existente.' },
+                { cmd: 'git branch', desc: 'Lista, crea o elimina ramas.' },
+                { cmd: 'git checkout [rama]', desc: 'Cambia a otra rama.' },
+                { cmd: 'git merge [rama]', desc: 'Fusiona una rama con la actual.' },
+                { cmd: 'git log', desc: 'Muestra el historial de commits.' },
+                { cmd: 'git diff', desc: 'Muestra las diferencias entre archivos.' },
+            ],
+            docker: [
+                { cmd: 'docker ps', desc: 'Lista los contenedores en ejecución.' },
+                { cmd: 'docker ps -a', desc: 'Lista todos los contenedores.' },
+                { cmd: 'docker run [imagen]', desc: 'Ejecuta un contenedor desde una imagen.' },
+                { cmd: 'docker build -t [nombre] .', desc: 'Construye una imagen desde un Dockerfile.' },
+                { cmd: 'docker stop [id]', desc: 'Detiene un contenedor en ejecución.' },
+                { cmd: 'docker rm [id]', desc: 'Elimina un contenedor detenido.' },
+                { cmd: 'docker images', desc: 'Lista las imágenes locales.' },
+                { cmd: 'docker rmi [id]', desc: 'Elimina una imagen.' },
+                { cmd: 'docker pull [imagen]', desc: 'Descarga una imagen de un registro.' },
+                { cmd: 'docker logs [id]', desc: 'Muestra los logs de un contenedor.' },
+                { cmd: 'docker-compose up', desc: 'Crea e inicia contenedores con Docker Compose.' },
+                { cmd: 'docker-compose down', desc: 'Detiene y elimina los contenedores de Compose.' },
+            ],
+            cloudflared: [
+                { cmd: 'cloudflared tunnel login', desc: 'Inicia sesión en tu cuenta de Cloudflare.' },
+                { cmd: 'cloudflared tunnel create [nombre]', desc: 'Crea un nuevo túnel.' },
+                { cmd: 'cloudflared tunnel list', desc: 'Lista todos los túneles configurados.' },
+                { cmd: 'cloudflared tunnel run [nombre]', desc: 'Ejecuta un túnel existente.' },
+                { cmd: 'cloudflared tunnel info [nombre]', desc: 'Muestra detalles de un túnel.' },
+                { cmd: 'cloudflared tunnel delete [nombre]', desc: 'Elimina un túnel.' },
+            ]
+        };
+
+        // --- FUNCIONES ---
+
+        /**
+         * Muestra una notificación visual temporal.
+         */
+        function showCopyFeedback() {
+            const feedbackEl = document.getElementById('copy-feedback');
+            feedbackEl.classList.add('show');
+            setTimeout(() => {
+                feedbackEl.classList.remove('show');
+            }, 2000); // La notificación desaparece después de 2 segundos
+        }
+        
+        /**
+         * Copia un texto al portapapeles.
+         * Crea un textarea temporal para asegurar la copia.
+         * @param {string} text - El texto a copiar.
+         */
+        function copyToClipboard(text) {
+            // Crea un elemento de textarea temporal
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = text;
+            
+            // Estilos para hacerlo invisible
+            tempTextArea.style.position = 'absolute';
+            tempTextArea.style.left = '-9999px';
+
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                // Utiliza document.execCommand para compatibilidad
+                document.execCommand('copy');
+                showCopyFeedback();
+            } catch (err) {
+                console.error('No se pudo copiar el texto: ', err);
+            }
+
+            document.body.removeChild(tempTextArea);
+        }
+
+        /**
+         * Crea el HTML para un solo comando.
+         * @param {object} commandObject - Objeto con {cmd, desc}.
+         * @returns {string} - El string HTML del elemento.
+         */
+        function createCommandHTML(commandObject) {
+            // El SVG del ícono de copiar
+            const copyIconSVG = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pointer-events-none">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>`;
+            
+            return `
+                <div class="flex items-center justify-between bg-gray-900 p-3 rounded-md">
+                    <div class="flex-grow">
+                        <code class="text-green-400 text-sm sm:text-base">${commandObject.cmd}</code>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-1">${commandObject.desc}</p>
+                    </div>
+                    <button class="copy-btn flex-shrink-0 ml-4 p-2 rounded-md bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white transition-colors duration-200" title="Copiar comando">
+                        ${copyIconSVG}
+                    </button>
+                </div>`;
+        }
+        
+        /**
+         * Renderiza una lista de comandos en su contenedor correspondiente.
+         * @param {string} containerId - El ID del div contenedor.
+         * @param {Array<object>} commands - El array de objetos de comando.
+         */
+        function renderCommands(containerId, commands) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            let allCommandsHTML = '';
+            commands.forEach(cmdObj => {
+                allCommandsHTML += createCommandHTML(cmdObj);
+            });
+            container.innerHTML = allCommandsHTML;
+        }
+
+
+        // --- EJECUCIÓN ---
+
+        // Se ejecuta cuando el DOM está completamente cargado.
+        document.addEventListener('DOMContentLoaded', () => {
+            // Renderiza todas las secciones de comandos
+            renderCommands('linux-commands', commandsData.linux);
+            renderCommands('git-commands', commandsData.git);
+            renderCommands('docker-commands', commandsData.docker);
+            renderCommands('cloudflared-commands', commandsData.cloudflared);
+
+            // Agrega un único listener de eventos al contenedor principal para manejar los clics en los botones de copiar
+            const mainContainer = document.querySelector('.container');
+            mainContainer.addEventListener('click', (event) => {
+                // Busca el botón de copia más cercano al elemento clickeado
+                const copyButton = event.target.closest('.copy-btn');
+                
+                if (copyButton) {
+                    // Encuentra el elemento 'code' dentro del mismo contenedor
+                    const commandContainer = copyButton.closest('.flex');
+                    const commandText = commandContainer.querySelector('code').innerText;
+                    
+                    // Copia el texto al portapapeles
+                    copyToClipboard(commandText);
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
