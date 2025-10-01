@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheatsheet de Comandos</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
@@ -43,49 +41,38 @@
 <body class="bg-gray-900 text-gray-200">
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-        <!-- Encabezado -->
         <header class="text-center mb-10">
             <h1 class="text-4xl md:text-5xl font-bold text-white">Cheatsheet de Comandos</h1>
             <p class="mt-2 text-lg text-gray-400">Tu guía rápida para la terminal.</p>
         </header>
 
-        <!-- Contenedor principal de las secciones de comandos -->
         <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <!-- Sección de Linux -->
             <section id="linux-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-cyan-400 mb-4 border-b border-gray-700 pb-2">Linux</h2>
                 <div id="linux-commands" class="space-y-3">
-                    <!-- Los comandos de Linux se insertarán aquí -->
-                </div>
+                    </div>
             </section>
 
-            <!-- Sección de Git -->
             <section id="git-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-orange-400 mb-4 border-b border-gray-700 pb-2">Git</h2>
                 <div id="git-commands" class="space-y-3">
-                    <!-- Los comandos de Git se insertarán aquí -->
-                </div>
+                    </div>
             </section>
 
-            <!-- Sección de Docker -->
             <section id="docker-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-blue-400 mb-4 border-b border-gray-700 pb-2">Docker</h2>
                 <div id="docker-commands" class="space-y-3">
-                    <!-- Los comandos de Docker se insertarán aquí -->
-                </div>
+                    </div>
             </section>
 
-            <!-- Sección de Cloudflared -->
             <section id="cloudflared-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-red-400 mb-4 border-b border-gray-700 pb-2">Cloudflared</h2>
                 <div id="cloudflared-commands" class="space-y-3">
-                    <!-- Los comandos de Cloudflared se insertarán aquí -->
-                </div>
+                    </div>
             </section>
         </main>
     </div>
 
-    <!-- Elemento para feedback visual de copiado -->
     <div id="copy-feedback" class="copied-feedback">
         ¡Comando copiado!
     </div>
@@ -111,6 +98,12 @@
                 { cmd: 'sudo [comando]', desc: 'Ejecuta un comando como superusuario.' },
                 { cmd: 'top', desc: 'Muestra procesos en ejecución.' },
                 { cmd: 'ssh [usuario]@[host]', desc: 'Conecta a un servidor remoto por SSH.' },
+                { cmd: 'python3 -m venv [entorno]', desc: 'Crea un entorno virtual de Python.' },
+                { cmd: 'source [entorno]/bin/activate', desc: 'Activa un entorno virtual de Python.' },
+                { cmd: 'systemctl list-units --type=service', desc: 'Muestra todos los servicios del sistema.' },
+                { cmd: 'sudo systemctl start [servicio]', desc: 'Inicia un servicio del sistema.' },
+                { cmd: 'sudo systemctl stop [servicio]', desc: 'Detiene un servicio del sistema.' },
+                { cmd: 'sudo systemctl status [servicio]', desc: 'Muestra el estado de un servicio.' },
             ],
             git: [
                 { cmd: 'git status', desc: 'Muestra el estado del repositorio.' },
