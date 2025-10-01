@@ -125,19 +125,19 @@
             ],
             docker: [
                 { cmd: 'docker ps', desc: 'Lista los contenedores en ejecución.' },
-                { cmd: 'docker ps -a', desc: 'Lista todos los contenedores.' },
+                { cmd: 'docker ps -a', desc: 'Lista todos los contenedores (detenidos también).' },
                 { cmd: 'docker run [imagen]', desc: 'Ejecuta un contenedor desde una imagen.' },
                 { cmd: 'docker build -t [nombre] .', desc: 'Construye una imagen desde un Dockerfile.' },
                 { cmd: 'docker stop [id]', desc: 'Detiene un contenedor en ejecución.' },
                 { cmd: 'docker rm [id]', desc: 'Elimina un contenedor detenido.' },
-                { cmd: 'docker images', desc: 'Lista las imágenes locales.' },
-                { cmd: 'docker rmi [id]', desc: 'Elimina una imagen.' },
                 { cmd: 'docker pull [imagen]', desc: 'Descarga una imagen de un registro.' },
                 { cmd: 'docker logs [id]', desc: 'Muestra los logs de un contenedor.' },
-                { cmd: 'docker compose up --build', desc: 'Crea e inicia contenedores con Docker Compose, forzando la reconstrucción.' },
+                { cmd: 'docker compose up --build', desc: 'Crea, (re)construye e inicia servicios con Compose.' },
                 { cmd: 'docker compose down', desc: 'Detiene y elimina los contenedores de Compose.' },
-                { cmd: 'docker system prune -a --volumes', desc: 'Elimina todos los contenedores, redes, imágenes no utilizadas y volúmenes.' },
-                { cmd: 'docker builder prune', desc: 'Limpia la caché de construcción de Docker.' }
+                { cmd: 'docker images', desc: 'Lista las imágenes locales principales.' },
+                { cmd: 'docker images -a', desc: 'Lista TODAS las imágenes, incluidas las capas intermedias.' },
+                { cmd: 'docker system prune', desc: 'Limpieza SEGURA. Elimina basura (recursos colgantes). No borrará tus imágenes construidas.' },
+                { cmd: 'docker system prune -a', desc: 'Limpieza TOTAL. Elimina TODO lo no usado, incluidas tus imágenes. Úsalo solo para un reseteo.' }
             ],
             cloudflared: [
                 { cmd: 'cloudflared tunnel login', desc: 'Inicia sesión en tu cuenta de Cloudflare.' },
