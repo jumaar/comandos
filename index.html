@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheatsheet de Comandos</title>
+    <title>Cheet de Comandos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect><path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path></svg>">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
     <style>
@@ -42,7 +43,13 @@
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         <header class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-bold text-white">Cheatsheet de Comandos</h1>
+            <div class="flex justify-center items-center gap-3 sm:gap-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-white">Cheet de Comandos</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 hidden sm:block">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </div>
             <p class="mt-2 text-lg text-gray-400">Tu guía rápida para la terminal.</p>
         </header>
 
@@ -53,15 +60,15 @@
                     </div>
             </section>
 
-            <section id="git-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold text-orange-400 mb-4 border-b border-gray-700 pb-2">Git</h2>
-                <div id="git-commands" class="space-y-3">
-                    </div>
-            </section>
-
             <section id="docker-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-blue-400 mb-4 border-b border-gray-700 pb-2">Docker</h2>
                 <div id="docker-commands" class="space-y-3">
+                    </div>
+            </section>
+
+            <section id="git-section" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-orange-400 mb-4 border-b border-gray-700 pb-2">Git</h2>
+                <div id="git-commands" class="space-y-3">
                     </div>
             </section>
 
@@ -95,9 +102,9 @@
                 { cmd: 'mv [origen] [destino]', desc: 'Mueve o renombra un archivo o directorio.' },
                 { cmd: 'touch [archivo]', desc: 'Crea un archivo vacío o actualiza su fecha.' },
                 { cmd: 'cat [archivo]', desc: 'Muestra el contenido de un archivo.' },
+                { cmd: 'htop', desc: 'Monitor de procesos interactivo (mejor que top).' },
                 { cmd: 'grep [patrón] [archivo]', desc: 'Busca un patrón en un archivo.' },
-                { cmd: 'sudo [comando]', desc: 'Ejecuta un comando como superusuario.' },
-                { cmd: 'top', desc: 'Muestra procesos en ejecución.' },
+                { cmd: 'journalctl -n 50 -f', desc: 'Muestra los últimos 50 logs del sistema y sigue mostrando nuevos.' },
                 { cmd: 'ssh [usuario]@[host]', desc: 'Conecta a un servidor remoto por SSH.' },
                 { cmd: 'python3 -m venv venv', desc: 'Crea un entorno virtual de Python.' },
                 { cmd: 'source venv/bin/activate', desc: 'Activa un entorno virtual de Python.' },
@@ -121,23 +128,34 @@
                 { cmd: 'git checkout [rama]', desc: 'Cambia a otra rama.' },
                 { cmd: 'git merge [rama]', desc: 'Fusiona una rama con la actual.' },
                 { cmd: 'git log', desc: 'Muestra el historial de commits.' },
+                { cmd: 'git revert [commit]', desc: 'Crea un nuevo commit que revierte los cambios de un commit anterior. Es seguro para ramas públicas.' },
+                { cmd: 'git reset [commit]', desc: '⚠️ CUIDADO: Resetea el HEAD a un commit específico. Modifica el historial. No usar en ramas públicas.' },
+                { cmd: 'git stash', desc: 'Guarda temporalmente los cambios que no están listos para un commit.' },
+                { cmd: 'git stash pop', desc: 'Aplica los cambios guardados y los elimina de la lista de stash.' },
+                { cmd: 'git config --global credential.helper libsecret', desc: 'Configura Git para guardar credenciales de forma segura en Linux usando libsecret.' },
+                { cmd: 'git remote -v', desc: 'Lista los repositorios remotos configurados.' },
                 { cmd: 'git diff', desc: 'Muestra las diferencias entre archivos.' },
             ],
             docker: [
+                { cmd: 'docker login', desc: 'Inicia sesión en un registro de Docker (ej. Docker Hub).' },
                 { cmd: 'docker ps', desc: 'Lista los contenedores en ejecución.' },
                 { cmd: 'docker ps -a', desc: 'Lista todos los contenedores (detenidos también).' },
                 { cmd: 'docker run [imagen]', desc: 'Ejecuta un contenedor desde una imagen.' },
                 { cmd: 'docker build -t [nombre] .', desc: 'Construye una imagen desde un Dockerfile.' },
                 { cmd: 'docker stop [id]', desc: 'Detiene un contenedor en ejecución.' },
                 { cmd: 'docker rm [id]', desc: 'Elimina un contenedor detenido.' },
-                { cmd: 'docker pull [imagen]', desc: 'Descarga una imagen de un registro.' },
                 { cmd: 'docker logs [id]', desc: 'Muestra los logs de un contenedor.' },
-                { cmd: 'docker compose up --build', desc: 'Crea, (re)construye e inicia servicios con Compose.' },
-                { cmd: 'docker compose down', desc: 'Detiene y elimina los contenedores de Compose.' },
                 { cmd: 'docker images', desc: 'Lista las imágenes locales principales.' },
                 { cmd: 'docker images -a', desc: 'Lista TODAS las imágenes, incluidas las capas intermedias.' },
+                { cmd: 'docker pull [imagen]', desc: 'Descarga una imagen de un registro.' },
+                { cmd: 'sudo docker compose up --build', desc: 'Levanta el stack, forzando la reconstrucción de las imágenes.' },
+                { cmd: 'sudo docker compose up --build --no-cache', desc: 'Levanta el stack, reconstruyendo imágenes sin usar la caché.' },
+                { cmd: 'sudo docker compose down', desc: 'Detiene y elimina los contenedores de Compose.' },
+                { cmd: 'sudo docker compose down -v', desc: 'Detiene y elimina contenedores, redes y volúmenes.' },
+                { cmd: 'sudo docker compose down -v --rmi all', desc: 'Lo mismo que el anterior, pero además elimina las imágenes construidas.' },
                 { cmd: 'docker system prune', desc: 'Limpieza SEGURA. Elimina basura (recursos colgantes). No borrará tus imágenes construidas.' },
-                { cmd: 'docker system prune -a', desc: 'Limpieza TOTAL. Elimina TODO lo no usado, incluidas tus imágenes. Úsalo solo para un reseteo.' }
+                { cmd: 'docker system prune -a', desc: 'Limpieza TOTAL. Elimina TODO lo no usado, incluidas tus imágenes. Úsalo solo para un reseteo.' },
+                { cmd: 'sudo docker system prune -a --volumes --force', desc: 'Limpieza PROFUNDA. Elimina todo lo no usado: contenedores, imágenes, redes y volúmenes.' }
             ],
             cloudflared: [
                 { cmd: 'cloudflared tunnel login', desc: 'Inicia sesión en tu cuenta de Cloudflare.' },
@@ -146,6 +164,7 @@
                 { cmd: 'cloudflared tunnel run [nombre]', desc: 'Ejecuta un túnel existente.' },
                 { cmd: 'cloudflared tunnel info [nombre]', desc: 'Muestra detalles de un túnel.' },
                 { cmd: 'cloudflared tunnel delete [nombre]', desc: 'Elimina un túnel.' },
+                { cmd: 'ssh nevera1@ssh-nevera1.lenstextil.com', desc: 'Conecta a un túnel específico mediante SSH.' },
             ]
         };
 
