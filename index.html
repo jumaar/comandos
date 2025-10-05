@@ -139,6 +139,7 @@
                 { cmd: 'git stash pop', desc: 'Aplica los cambios guardados y los elimina de la lista de stash.' },
                 { cmd: 'git diff', desc: 'Muestra las diferencias entre archivos.' },
                 { cmd: 'git config --global credential.helper libsecret', desc: 'Configura Git para guardar credenciales de forma segura en Linux usando libsecret.' },
+                { cmd: 'git restore --source [commit] -- [archivo]', desc: 'Restaura un archivo a la versión de un commit específico. Ej: git restore --source f2aafa5b -- MODULO-KIOSKO/redeploy.sh' },
             ],
             docker: [
                 { cmd: 'docker login', desc: 'Inicia sesión en un registro de Docker (ej. Docker Hub).' },
