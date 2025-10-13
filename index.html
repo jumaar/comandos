@@ -408,13 +408,14 @@
                     <div class="branch-line bg-green-500" style="min-height: 1rem;"></div>
                     <div class="text-center p-2 bg-gray-700 rounded-md w-full my-2">
                         <p class="text-gray-400 text-xs mb-1 font-bold">PASO 5: ¡DESPLIEGUE!</p>
-                        <code class="text-white">git push origin v1.0.1</code><br>
-                        <code class="text-white">git tag -a v1.0.1 -m "..."</code>
+                        <code class="text-white">n. git push origin v1.0.1</code><br>
+                        <code class="text-white">m. git tag -a v1.0.1 -m "..."</code><br>
+                        <code class="text-white">l. git push origin main</code>
                     </div>
                     <div class="arrow-up">↑</div>
                     <div class="text-center p-2 bg-gray-700 rounded-md w-full mt-2">
                         <p class="text-gray-400 text-xs mb-1 font-bold">PASO 4: Integrar en `main`</p>
-                        <code class="text-white">git merge develop</code>
+                        <code class="text-white">k. git merge develop</code>
                     </div>
                     <div class="branch-line bg-green-500" style="min-height: 12rem;"></div>
                     <div class="flex-grow"></div>
@@ -436,23 +437,24 @@
                     <div class="branch-line bg-cyan-500" style="min-height: 1rem;"></div>
                     <div class="text-center p-2 bg-gray-700 rounded-md w-full my-2">
                         <p class="text-gray-400 text-xs mb-1 font-bold">PASO 3: Integrar `feature` y borrar feature</p>
-                        <code class="text-white">git checkout main</code><br>
-                        <code class="text-white">git push origin develop</code><br>
+                        <code class="text-white">j. git checkout main</code><br>
+                        <code class="text-white">i. git push origin develop</code><br>
                         <p class="text-xs text-gray-500 mt-1">Actualiza el CI/CD</p>
-                        <code class="text-white">git branch -d feature</code><br>
+                        <code class="text-white">h. git branch -d feature</code><br>
                         <p class="text-xs text-gray-500 mt-1">Elimina la rama de feature para no dejar basura</p>
-                        <code class="text-white">git merge feature</code><br>
+                        <code class="text-white">g. git merge feature</code><br>
                     </div>
                     <div class="branch-line bg-cyan-500" style="min-height: 6.5rem;"></div>
                     <div class="text-center p-2 bg-gray-700 rounded-md w-full my-2">
                          <p class="text-gray-400 text-xs mb-1 font-bold">PASO 1: Crear rama `feature`</p>
-                         <code class="text-white mt-2 inline-block">git checkout -b feature</code>
+                         <code class="text-white mt-2 inline-block">c. git checkout -b feature</code>
                     </div>
                     <div class="branch-line bg-cyan-500"></div>
                      <div class="text-center p-2 bg-gray-700 rounded-md w-full mt-2">
-                        <p class="text-gray-400 text-xs mb-1 font-bold">PASO 0: Sincronizar `develop`</p>
-                        <code class="text-white">git pull origin develop</code><br>
-                        <p class="text-xs text-gray-500 mt-1">Buena práctica: Crea siempre una rama nueva para cada cambio. Evita trabajar directamente en `develop`.</p>
+                        <p class="text-gray-400 text-xs mb-1 font-bold">PASO 0: Sincronizar `develop con el ultimo cambio en main`</p>
+                        <code class="text-white">b. git pull origin main</code><br><p class="text-xs text-gray-500 mt-1">con esto arrancamos con la ultima vercion estable del codigo`.</p>
+                        <code class="text-white">a. git pull origin develop</code><br>
+                        <p class="text-xs text-gray-500 mt-1">Crea siempre una rama nueva para cada cambio. Evita trabajar directamente en `develop`.</p>
                     </div>
                 </div>
 
@@ -467,9 +469,9 @@
                     <div class="branch-line bg-yellow-500" style="min-height: 1rem;"></div>
                      <div class="text-center p-2 bg-gray-700 rounded-md w-full my-2">
                         <p class="text-gray-400 text-xs mb-1 font-bold">PASO 2: Commits en la rama</p>
-                        <code class="text-white">git checkout develop</code><br>
-                        <code class="text-white">git commit -m "cambio para aprobar"</code><br>
-                        <code class="text-white">git add .</code>
+                        <code class="text-white">f. git checkout develop</code><br>
+                        <code class="text-white">e. git commit -m "cambio para aprobar"</code><br>
+                        <code class="text-white">d. git add .</code>
                         <p class="text-xs text-gray-500 mt-1"> realizar todos los cambios y probar que todo funcione</p>
                          
                      </div>
