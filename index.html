@@ -77,9 +77,9 @@
                     <a href="#" class="text-xl font-bold text-white">Cheatsheet</a>
                 </div>
                 <div id="main-nav" class="flex items-center space-x-4 text-sm font-medium">
-                    <a href="#" data-target="page-commands" class="nav-link text-cyan-400 px-3 py-2 rounded-md bg-gray-700">Comandos</a>
-                    <a href="#" data-target="page-github" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md">GitHub Flow</a>
-                    <a href="#" data-target="page-database" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md">DB Migrations</a>
+                    <a href="#" data-target="page-commands" class="nav-link px-3 py-2 rounded-md transition-colors duration-200 text-cyan-400 bg-gray-700">Comandos</a>
+                    <a href="#" data-target="page-github" class="nav-link px-3 py-2 rounded-md transition-colors duration-200 text-gray-300 bg-gray-800 hover:bg-gray-700 hover:text-white">GitHub Flow</a>
+                    <a href="#" data-target="page-database" class="nav-link px-3 py-2 rounded-md transition-colors duration-200 text-gray-300 bg-gray-800 hover:bg-gray-700 hover:text-white">DB Migrations</a>
                 </div>
             </div>
         </nav>
@@ -134,8 +134,8 @@
         <!-- Página 3: DB Migrations -->
         <div id="page-database" class="page-content hidden">
             <div class="text-center mb-10">
-                <h1 class="text-4xl md:text-5xl font-bold text-white">Migraciones de Base de Datos con Prisma</h1>
-                <p class="mt-2 text-lg text-gray-400">Prácticas seguras para entornos de producción.</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white">Migraciones de BD con Prisma y PostgreSQL</h1>
+                <p class="mt-2 text-lg text-gray-400">Guía de comandos y prácticas seguras para producción.</p>
             </div>
             <main id="db-migrations-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"></main>
         </div>
@@ -272,8 +272,11 @@
 
         const dbCommandsData = {
             localDev: [
-                { cmd: 'npx prisma migrate dev --name nombre_migracion', desc: 'Crea una nueva migración sin aplicarla inmediatamente.' },
-                { cmd: 'npx prisma migrate deploy', desc: 'Aplica las migraciones pendientes. Seguro para desarrollo y producción.' }
+                { cmd: 'npx prisma migrate dev --name add_new_feature', desc: 'Crea y aplica una nueva migración en desarrollo. Genera un archivo SQL.' },
+                { cmd: 'npx prisma generate', desc: 'Actualiza el cliente de Prisma después de cambiar el schema.prisma.' },
+                { cmd: 'npx prisma db seed', desc: 'Ejecuta el script de `seed` para poblar la base de datos con datos iniciales.' },
+                { cmd: 'npx prisma migrate reset', desc: '⚠️ Resetea la BD de desarrollo, aplica todas las migraciones.' },
+                { cmd: 'npx prisma studio', desc: 'Abre una GUI en el navegador para ver y editar los datos de tu BD.' }
             ],
             prodFlow: [
                 { cmd: 'npx prisma migrate deploy', desc: 'Opción A (Recomendado): Aplica migraciones pendientes en CI/CD. No borra datos.' },
@@ -504,8 +507,12 @@
                 }
 
                 // Actualizar estilos de los enlaces de navegación
-                navLinks.forEach(link => link.classList.remove('text-cyan-400', 'bg-gray-700'));
+                navLinks.forEach(link => {
+                    link.classList.remove('text-cyan-400', 'bg-gray-700');
+                    link.classList.add('text-gray-300', 'bg-gray-800', 'hover:bg-gray-700', 'hover:text-white');
+                });
                 targetLink.classList.add('text-cyan-400', 'bg-gray-700');
+                targetLink.classList.remove('text-gray-300', 'bg-gray-800', 'hover:bg-gray-700', 'hover:text-white');
             });
         });
 
