@@ -272,11 +272,14 @@
 
         const dbCommandsData = {
             localDev: [
-                { cmd: 'npx prisma migrate dev --name add_new_feature', desc: 'Crea y aplica una nueva migración en desarrollo. Genera un archivo SQL.' },
-                { cmd: 'npx prisma generate', desc: 'Actualiza el cliente de Prisma después de cambiar el schema.prisma.' },
-                { cmd: 'npx prisma db seed', desc: 'Ejecuta el script de `seed` para poblar la base de datos con datos iniciales.' },
-                { cmd: 'npx prisma migrate reset', desc: '⚠️ Resetea la BD de desarrollo, aplica todas las migraciones.' },
-                { cmd: 'npx prisma studio', desc: 'Abre una GUI en el navegador para ver y editar los datos de tu BD.' }
+                { cmd: 'npx prisma format', desc: '1. Formatea automáticamente el archivo `schema.prisma` para mantenerlo legible.' },
+                { cmd: 'npx prisma validate', desc: '2. Valida que el `schema.prisma` esté sintácticamente correcto.' },
+                { cmd: 'npx prisma migrate dev --name init', desc: '3. (Solo la primera vez) Crea la migración inicial y aplica los cambios.' },
+                { cmd: 'npx prisma migrate dev --name add_new_feature', desc: '4. Crea y aplica una nueva migración en desarrollo. Genera un archivo SQL.' },
+                { cmd: 'npx prisma generate', desc: '5. Actualiza el cliente de Prisma después de cambiar el `schema.prisma`.' },
+                { cmd: 'npx prisma db seed', desc: '6. (Opcional) Ejecuta el script de `seed` para poblar la base de datos con datos iniciales.' },
+                { cmd: 'npx prisma studio', desc: 'Herramienta: Abre una GUI en el navegador para ver y editar los datos de tu BD.' },
+                { cmd: 'npx prisma migrate reset', desc: '⚠️ Resetea la BD de desarrollo, aplica todas las migraciones y ejecuta el seed.' }
             ],
             prodFlow: [
                 { cmd: 'npx prisma migrate deploy', desc: 'Opción A (Recomendado): Aplica migraciones pendientes en CI/CD. No borra datos.' },
