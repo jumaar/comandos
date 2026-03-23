@@ -277,8 +277,9 @@
                 { cmd: 'npx prisma migrate dev --name init', desc: '3. (Solo la primera vez) Crea la migración inicial y aplica los cambios.' },
                 { cmd: 'npx prisma migrate dev --name add_new_feature', desc: '4. Crea y aplica una nueva migración en desarrollo. Genera un archivo SQL.' },
                 { cmd: 'npx prisma migrate dev --name add_new_feature --create-only', desc: '5. ⚡ Crea la migración SIN aplicarla. Genera el archivo SQL para revisión manual antes de aplicar.' },
-                { cmd: 'npx prisma generate', desc: '6. Actualiza el cliente de Prisma después de cambiar el `schema.prisma`.' },
-                { cmd: 'npx prisma db seed', desc: '7. (Opcional) Ejecuta el script de `seed` para poblar la base de datos con datos iniciales.' },
+                { cmd: 'npx prisma migrate dev', desc: '6. ⚡ Aplica la última migración creada. Útil para reaplicar cambios o resolver problemas.' },
+                { cmd: 'npx prisma generate', desc: '7. Actualiza el cliente de Prisma después de cambiar el `schema.prisma`.' },
+                { cmd: 'npx prisma db seed', desc: '8. (Opcional) Ejecuta el script de `seed` para poblar la base de datos con datos iniciales.' },
                 { cmd: 'npx prisma studio', desc: 'Herramienta: Abre una GUI en el navegador para ver y editar los datos de tu BD.' },
                 { cmd: 'npx prisma migrate reset', desc: '⚠️ Resetea la BD de desarrollo, aplica todas las migraciones y ejecuta el seed.' }
             ],
